@@ -1,0 +1,16 @@
+{
+    "name": "bicep",
+    "id": "bicep",
+    "version": "0.0.1",
+    "description": "A feature to install the Bicep CLI",
+    "installsAfter": [
+        "ghcr.io/nils-geistmann/devcontainers-features/zsh"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-bicep"
+            ]
+        }
+    }
+}
