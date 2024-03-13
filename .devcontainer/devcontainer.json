@@ -1,0 +1,28 @@
+{
+    "name": "Azure Container Apps",
+    "image": "debian:bookworm-slim",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csdevkit",
+                "ms-azuretools.vscode-azureappservice"
+            ],
+            "settings": {
+                "files.autoSave": "onFocusChange",
+                "editor.formatOnSave": true
+            }
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/dotnet:2": {},
+        "ghcr.io/devcontainers/features/powershell:1": {},
+        "ghcr.io/nils-geistmann/devcontainers-features/create-remote-user:0": {},
+        "ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {
+            "theme": "agnoster",
+            "plugins": "git docker azure"
+        }
+    },
+    "remoteUser": "containerapps"
+}
