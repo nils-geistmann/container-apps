@@ -36,6 +36,8 @@ module containerRegistry 'modules/container-registry.bicep' = {
   scope: resourceGroup(resourceGroupName)
   params: {
     location: rg.outputs.location
+    vnetId: vnet.outputs.vNetId
+    privateEndpointSubnetId: vnet.outputs.peSubnetId
   }
 }
 

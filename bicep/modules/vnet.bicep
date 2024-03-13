@@ -11,12 +11,6 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
     }
     subnets: [
       {
-        name: 'PESubnet'
-        properties: {
-          addressPrefix: '10.0.0.0/24'
-        }
-      }
-      {
         name: 'ACASubnet'
         properties: {
           addressPrefix: '10.0.4.0/23'
@@ -26,4 +20,13 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
   }
 }
 
-output vnet object = vnet
+resource peSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
+  name: 'PESubnet'
+  parent: vnet
+  properties: {
+    addressPrefix: '10.0.0.0/24'
+  }
+}
+
+output peSubnetId string = peSubnet.id
+output vNetId string = vnet.id
