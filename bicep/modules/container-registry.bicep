@@ -56,6 +56,7 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2023-09-01' = {
         }
       }
     ]
+    customNetworkInterfaceName: 'pe-acr-apl2003-nic'
   }
 }
 
@@ -84,27 +85,6 @@ resource pvtEndpointDnsGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneG
       { name: 'privatelink-azurecr-io'
         properties: {
           privateDnsZoneId: privateDnsZone.id
-        }
-      }
-    ]
-  }
-}
-
-resource networkInterface 'Microsoft.Network/networkInterfaces@2021-05-01' = {
-  name: 'pe-acr-apl2003-nic'
-  location: location
-  tags: {
-    displayName: 'pe-acr-apl2003-nic'
-  }
-  properties: {
-    ipConfigurations: [
-      {
-        name: 'pe-acr-apl2003-ipconfig.${guid('pe-acr-apl2003-nic')}'
-        properties: {
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: privateEndpointSubnetId
-          }
         }
       }
     ]
