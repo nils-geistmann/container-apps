@@ -2,8 +2,17 @@
 
 set -e
 
+architecture=
+
+if [ "$(uname -m)" = "aarch64" ]; then
+  architecture="arm64"
+else
+  architecture="x64"
+fi
+
 # Fetch the latest Bicep CLI binary
-curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-arm64
+curl -Lo bicep "https://github.com/Azure/bicep/releases/latest/download/bicep-linux-$architecture"
+
 # Mark it as executable
 chmod +x ./bicep
 # Add bicep to your PATH (requires admin)
